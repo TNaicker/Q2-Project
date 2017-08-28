@@ -4,10 +4,9 @@ const knex          = require('./db.js');
 const bodyParser    = require('body-parser');
 const cookieSession = require('cookie-session');
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
-//hi
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
