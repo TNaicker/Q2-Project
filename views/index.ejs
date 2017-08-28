@@ -5,6 +5,15 @@
     <title>Hello</title>
   </head>
   <body>
-    Hola mundo
+    <h1>THIS IS TEMPORARY HOME PAGE</h1>
+    <% if(!loggedIn) { %>
+      <a href="/signup">Sign Up</a><br>
+      <a href="/login">Log in</a></br>
+      <a href="/game">PLAY</a>
+    <% } else { %>
+      <a href="/profile">Profile</a><br>
+      <a href="/logout">Logout</a></br>
+      <a href="/game">PLAY</a>
+    <% } %>
   </body>
 </html>
