@@ -1,11 +1,8 @@
 const express       = require('express');
 const app           = express();
-const APP_MODE      = process.env.APP_MODE;
-const dbConfig      = require('./knexfile')[APP_MODE];
-const knex          = require('knex')(dbConfig);
+const knex          = require('./db.js');
 const bodyParser    = require('body-parser');
 const cookieSession = require('cookie-session');
-var x = 10;
 
 const PORT = 8000;
 

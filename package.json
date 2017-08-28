@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
     "knex": "knex"
   },
   "keywords": [],
@@ -17,6 +18,7 @@
     "ejs": "^2.5.7",
     "express": "^4.15.4",
     "knex": "^0.13.0",
+    "nodemon": "^1.11.0",
     "pg": "^7.2.0"
   },
   "devDependencies": {
