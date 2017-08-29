@@ -8,9 +8,6 @@ router.get('/main', (req, res) => {
   console.log(req.session);
   res.render('index', {loggedIn: Boolean(req.session.user_id)});
 })
-router.get('/game', (req, res) => {
-  res.render('game');
-})
 
 router.get('/signup', (req, res) => {
   res.render('signup')
