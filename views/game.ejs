@@ -2,9 +2,34 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>GAME</title>
+    <title>testing</title>
+    <link rel='stylesheet' href='./Stylesheets/style.css'>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   </head>
   <body>
-    <h1>GAME</h1>
+
+    <header id="header">
+      <h1>PICTIONARY</h1>
+    </header>
+
+    <section id="game">
+      <div id="userList">
+        <ul id="users">
+          <li></li>
+        </ul>
+      </div>
+      <div id="canvas">
+        <canvas id="myCanv" width="700" height="500"></canvas>
+      </div>
+      <div id="chat">
+        <ul id="messages"><li style='color:red'>CHAT...</li></ul>
+        <form action="">
+          <input id="m" autocomplete="off" /><button>Send</button>
+        </form>
+      </div>
+    </section>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src='./scripts/drawScript.js'></script>
+    <script src="./scripts/chatScript.js"></script>
   </body>
 </html>
