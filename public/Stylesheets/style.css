@@ -11,6 +11,9 @@ body {
   margin: 0;
   text-align: center;
 }
+#header h1 {
+  margin: 0;
+}
 #game {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -19,7 +22,7 @@ canvas {
   display: inline-block;
   border: 1px solid red;
 }
-form {
+#chatForm {
   background: #fff;
   padding: 3px;
   width: 100%;
@@ -57,4 +60,41 @@ form button {
 #userList {
   height: 600px;
   border: 1px solid black;
+}
+
+#username {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  color: white;
+}
+#enterName {
+  text-align: center;
+  padding-top: 15%;
+  font-size: 44pt;
+}
+#usernameInput {
+  margin-left: 38%;
+  text-align: center;
+  width: 300px;
+  color: white;
+  font-size: 26pt;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #fff;
+  outline: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+#CurConnected {
+  background-color: black;
+  color: white;
+}
+
+#overlay {
+  width: 100%;
+  height: 50%;
+  background-color: black;
+  color: white;
+  text-align: center;
 }

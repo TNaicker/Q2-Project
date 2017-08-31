@@ -1,5 +1,7 @@
 $(function() {
-  var socket = io();
+  var socket = io.connect();
+  var drawingStart = false;
+  $('#overlay').hide();
 
   var canvas = document.getElementById('myCanv');
   var ctx = canvas.getContext('2d');
@@ -51,7 +53,7 @@ $(function() {
   })
 
   function mouseAction(action, e) {
-    if(action === 'mousedown') {
+    if(action === 'mousedown' && drawingStart === true) {
       drawing = true;
       prevMouseX = CurrMouseX;
       prevMouseY = CurrMouseY;
@@ -62,7 +64,7 @@ $(function() {
     if(action === 'mouseup' || action ==='mouseout') {
       drawing = false;
     }
-    if(drawing) {
+    if(drawing && drawingStart === true) {
       // prevMouseX = CurrMouseX;
       // prevMouseY = CurrMouseY;
       // CurrMouseX = e.pageX - canvas.offsetLeft;
@@ -95,4 +97,28 @@ $(function() {
        data.CurrMouseY,
        data.color);
   }
+
+
+
+  socket.on('ready', (users, name, clients) => {
+    console.log(users);
+    if(users >= 2) {
+
+      console.log("GOING IN HERE");
+      $('#myCanv').fadeOut();
+      $('#overlay').show();
+      letDraw = true;
+      socket.emit('startDrawing', letDraw);
+      window.setTimeout(() => {
+        $('#overlay').fadeOut();
+        $('#myCanv').show();
+      }, 10000);
+    }
+
+  })
+
+  socket.on('startDrawing', (drawFlag) => {
+    drawingStart = drawFlag;
+  })
+
 })
