@@ -2,6 +2,7 @@ $(function() {
   var socket = io.connect();
   var drawingStart = false;
   $('#overlay').hide();
+  var interval;
 
   var canvas = document.getElementById('myCanv');
   var ctx = canvas.getContext('2d');
@@ -103,18 +104,26 @@ $(function() {
   socket.on('ready', (users, name, clients) => {
     console.log(users);
     if(users >= 2) {
+      if(users === 2) {
+        canvas.width = canvas.width;
 
-      canvas.width = canvas.width;
-
-      console.log("GOING IN HERE");
-      $('#myCanv').fadeOut();
-      $('#overlay').show();
-      letDraw = true;
-      socket.emit('startDrawing', letDraw);
-      window.setTimeout(() => {
-        $('#overlay').fadeOut();
-        $('#myCanv').show();
-      }, 10000);
+        console.log("GOING IN HERE");
+        $('#myCanv').fadeOut();
+        $('#overlay').show();
+        letDraw = true;
+        socket.emit('startDrawing', letDraw);
+        window.setTimeout(() => {
+          $('#overlay').fadeOut();
+          $('#myCanv').show();
+        }, 10000);
+      }
+      console.log("SOMEONE JOINED... CLEARING INTERVAL");
+      clearInterval(interval);
+      interval = setInterval(function() {
+        console.log("EMITTING FROM DRAWSCRIPT AGAIN!");
+        canvas.width = canvas.width;
+        socket.emit('startDrawing', letDraw);
+      }, 30000)
     }
 
   })

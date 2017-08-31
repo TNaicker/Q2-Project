@@ -3,6 +3,8 @@ const app           = express();
 const knex          = require('./db.js');
 const bodyParser    = require('body-parser');
 const cookieSession = require('cookie-session');
+var game = false;
+var intervalCount = 0;
 var userListID;
 var clientNum = 0;
 var clients = [];
@@ -27,17 +29,18 @@ const sessions = require('./routes/sessions.js');
 app.use(sessions);
 
 app.get('/game', (req, res) => {
-  returnUserID(req)
-    .then((result) => {
-      userListID = result;
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  res.render('game', {
-    guest_id: req.session.guest_id,
-    user_id: req.session.user_id
-  });
+  // returnUserID(req)
+  //   .then((result) => {
+  //     userListID = result;
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   })
+  // res.render('game', {
+  //   guest_id: req.session.guest_id,
+  //   user_id: req.session.user_id
+  // });
+  res.render('game');
 })
 
 app.use((req, res) => {
@@ -58,7 +61,7 @@ io.on('connection', function(socket){
 
   var addedUser = false;
   clients.push(socket.id);
-  // console.log('user connected: ' + socket.id);
+  console.log('user connected: ' + socket.id);
   console.log('array: ' + clients.length);
 
   socket.on('disconnect', function(){
@@ -101,26 +104,40 @@ io.on('connection', function(socket){
   })
 
   socket.on('startDrawing', function(drawingStart) {
+    drawingStart = false;
+    console.log('setting everyone to false: ' + drawingStart);
+    console.log('==============================================');
+    io.emit('startDrawing', drawingStart);
+    game = drawingStart;
+    drawingStart = true;
     console.log('counter: ' + counter);
     console.log('emitting to specific client! ' + clients[counter]);
-    setInterval(function() {
-      io.to(clients[counter]).emit('startDrawing', drawingStart);
-      if(counter >= clients.length) {
-        counter = 0;
-        return;
-      }
-      counter ++;
-    }, 15000);
+    console.log('drawingStart: ' + drawingStart);
+    io.to(clients[counter-1]).emit('startDrawing', drawingStart);
+    if(counter >= clients.length) {
+      counter = 0;
+    }
+    counter +=1;
+    // console.log("COUNTER OUTSIDE UNFLAGGING: " + counter);
+    // if(counter >= 2) {
+    //   console.log("COUNTER INSIDE UNFLAGGING: " + counter);
+    //   console.log("UNFLAGGING");
+    //   var unflagHold = counter;
+    //   unflagHold--;
+    //   drawingStart = false;
+    //   io.to(clients[unflagHold]).emit('startDrawing', drawingStart);
+    // }
   })
 })
 
-function rotatePlayers(drawingStart) {
-  io.to(clients[counter]).emit('startDrawing', drawingStart);
-  if(counter >= clients.length) {
-    counter = 0;
+function rotatePlayers(drawingStart, counting) {
+  console.log("WORKING IN ROTATE");
+  console.log("COUNTER!: " + counting);
+  io.to(clients[counting]).emit('startDrawing', drawingStart);
+  if(counting >= clients.length) {
+    counting = 0;
     return;
   }
-  counter ++;
 }
 
 function returnUserID(req) {
