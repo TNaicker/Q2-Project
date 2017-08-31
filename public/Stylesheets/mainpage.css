@@ -1,0 +1,28 @@
+body {
+  background-image: url("../Images/MainsiteWallpaper.jpg");
+  background-size: cover;
+  background-color: grey;
+}
+.header h1 {
+  margin: 0 auto;
+  text-align: center;
+}
+.body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  color: white;
+}
+.body div {
+  margin: 0 auto;
+}
+.body img {
+  width: 100%;
+}
+.card {
+  width: 90%;
+  height: 500px;
+}
+.card-block {
+  background: brown;
+}
