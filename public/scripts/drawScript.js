@@ -104,6 +104,8 @@ $(function() {
     console.log(users);
     if(users >= 2) {
 
+      canvas.width = canvas.width;
+
       console.log("GOING IN HERE");
       $('#myCanv').fadeOut();
       $('#overlay').show();

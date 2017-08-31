@@ -8,6 +8,7 @@ var clientNum = 0;
 var clients = [];
 var clientNames = [];
 var disconnected;
+var counter = 0;
 
 const PORT = process.env.PORT || 8000;
 
@@ -100,10 +101,27 @@ io.on('connection', function(socket){
   })
 
   socket.on('startDrawing', function(drawingStart) {
-    console.log('emitting to specific client! ' + clients[0]);
-    io.to(clients[0]).emit('startDrawing', drawingStart);
+    console.log('counter: ' + counter);
+    console.log('emitting to specific client! ' + clients[counter]);
+    setInterval(function() {
+      io.to(clients[counter]).emit('startDrawing', drawingStart);
+      if(counter >= clients.length) {
+        counter = 0;
+        return;
+      }
+      counter ++;
+    }, 15000);
   })
 })
+
+function rotatePlayers(drawingStart) {
+  io.to(clients[counter]).emit('startDrawing', drawingStart);
+  if(counter >= clients.length) {
+    counter = 0;
+    return;
+  }
+  counter ++;
+}
 
 function returnUserID(req) {
   return new Promise((resolve, reject) => {
