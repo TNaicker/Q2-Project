@@ -36,11 +36,11 @@
 .card {
   width: 50%;
   margin: 0 auto;
-  margin-top: 5vh;
+  margin-top: 2vh;
   text-align: center;
 }
 .card-block {
-  height: 10vh;
+  height: 8vh;
 }
 .card-img-top {
   width: 100%;
@@ -56,7 +56,7 @@
   background: white;
   width: 60%;
   margin: 0 auto;
-  margin-top: 10vh;
+  margin-top: 7vh;
 }
 .jumbotron {
   text-align: center;

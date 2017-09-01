@@ -1,7 +1,9 @@
 $(function() {
   var socket = io.connect();
   var drawingStart = false;
+  var startgame = false;
   $('#overlay').hide();
+  $('#startbutt').hide();
   var interval;
   var holderinterval;
   var guesses = '';
@@ -106,12 +108,19 @@ $(function() {
   objectToDraw = wordArr[0];
   setInterval(function() {
     counter ++;
+    console.log("COPUNTER: " + counter);
     objectToDraw = wordArr[counter];
     console.log('wordArr word: ' + wordArr[counter]);
-    if(counter >= wordArr.length) {
+    if(counter >= wordArr.length-1) {
       counter = 0;
     }
   }, 29800)
+
+  $('#startbutt').click(function(){
+    startgame = true;
+    console.log(startgame);
+  });
+  console.log(startgame);
 
   socket.on('ready', (users, name, clients) => {
     console.log(users);
