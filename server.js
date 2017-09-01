@@ -4,6 +4,7 @@ const knex          = require('./db.js');
 const bodyParser    = require('body-parser');
 const cookieSession = require('cookie-session');
 var game = false;
+var wordArr = ['dog', 'cat', 'fish', 'lion', 'horse', 'sea otter'];
 var intervalCount = 0;
 var userListID;
 var clientNum = 0;
@@ -97,6 +98,9 @@ io.on('connection', function(socket){
       io.sockets.emit('userChat', name, msg);
     })
   })
+  socket.on('objectToDraw', (drawingObject) => {
+    io.sockets.emit('objectToDraw', drawingObject);
+  })
 
   socket.on('drawing', function(data) {
     io.emit('drawing', data);
@@ -113,20 +117,11 @@ io.on('connection', function(socket){
     console.log('counter: ' + counter);
     console.log('emitting to specific client! ' + clients[counter]);
     console.log('drawingStart: ' + drawingStart);
-    io.to(clients[counter-1]).emit('startDrawing', drawingStart);
+    io.to(clients[counter-1]).emit('startDrawing', drawingStart, wordArr);
     if(counter >= clients.length) {
       counter = 0;
     }
     counter +=1;
-    // console.log("COUNTER OUTSIDE UNFLAGGING: " + counter);
-    // if(counter >= 2) {
-    //   console.log("COUNTER INSIDE UNFLAGGING: " + counter);
-    //   console.log("UNFLAGGING");
-    //   var unflagHold = counter;
-    //   unflagHold--;
-    //   drawingStart = false;
-    //   io.to(clients[unflagHold]).emit('startDrawing', drawingStart);
-    // }
   })
 })
 

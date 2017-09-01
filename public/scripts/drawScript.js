@@ -3,6 +3,12 @@ $(function() {
   var drawingStart = false;
   $('#overlay').hide();
   var interval;
+  var holderinterval;
+  var guesses = '';
+  var objectToDraw;
+  var wordArr = ['dog', 'cat', 'fish', 'lion', 'horse', 'sea otter'];
+  var rotateWords = false;
+  var points = 100;
 
   var canvas = document.getElementById('myCanv');
   var ctx = canvas.getContext('2d');
@@ -66,10 +72,7 @@ $(function() {
       drawing = false;
     }
     if(drawing && drawingStart === true) {
-      // prevMouseX = CurrMouseX;
-      // prevMouseY = CurrMouseY;
-      // CurrMouseX = e.pageX - canvas.offsetLeft;
-      // CurrMouseY = e.pageY - canvas.offsetTop;
+
       draw(prevMouseX = CurrMouseX,
          prevMouseY = CurrMouseY,
          CurrMouseX = e.pageX - canvas.offsetLeft,
@@ -99,7 +102,16 @@ $(function() {
        data.color);
   }
 
-
+  var counter = 0
+  objectToDraw = wordArr[0];
+  setInterval(function() {
+    counter ++;
+    objectToDraw = wordArr[counter];
+    console.log('wordArr word: ' + wordArr[counter]);
+    if(counter >= wordArr.length) {
+      counter = 0;
+    }
+  }, 29800)
 
   socket.on('ready', (users, name, clients) => {
     console.log(users);
@@ -119,17 +131,50 @@ $(function() {
       }
       console.log("SOMEONE JOINED... CLEARING INTERVAL");
       clearInterval(interval);
+      holderinterval = interval;
       interval = setInterval(function() {
         console.log("EMITTING FROM DRAWSCRIPT AGAIN!");
         canvas.width = canvas.width;
         socket.emit('startDrawing', letDraw);
       }, 30000)
     }
+    socket.on('user left', (data) => {
+      if(users <= 1) {
+        canvas.width = canvas.width;
+        clearInterval(holderinterval);
+        console.log("GAME STOPPED");
+      }
+    })
 
   })
 
-  socket.on('startDrawing', (drawFlag) => {
+  socket.on('userChat', (name, msg) => {
+    $('#messages').append($('<li>').text(name + ': ' + msg));
+  })
+
+  socket.on('userChat', (name, msg) => {
+    guesses = msg;
+    console.log("GUESSES: " + guesses);
+    console.log("objectToDraw: " + objectToDraw);
+    if(guesses === objectToDraw) {
+      console.log("GUESSED!!");
+      $('#messages').append($('<li style="background:green">').text(name + ' GUESSED THE WORD'));
+      $(`li:contains(${objectToDraw})`).remove();
+    }
+  })
+
+  socket.on('startDrawing', (drawFlag, word) => {
     drawingStart = drawFlag;
+    if(word) {
+      console.log("OBJECT TO DRAW: " + objectToDraw);
+      $('#myCanv').hide();
+      $('#overlay').text('DRAW: ' + objectToDraw);
+      $('#overlay').show();
+      window.setTimeout(() => {
+        $('#overlay').fadeOut();
+        $('#myCanv').show();
+      }, 5000);
+    }
   })
 
 })

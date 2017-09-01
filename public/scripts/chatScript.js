@@ -42,9 +42,9 @@ $(function () {
   })
 
   //logic for when a user sends messages in chat
-  socket.on('userChat', (name, msg) => {
-    $('#messages').append($('<li>').text(name + ': ' + msg));
-  })
+  // socket.on('userChat', (name, msg) => {
+  //   $('#messages').append($('<li>').text(name + ': ' + msg));
+  // })
 
   // #@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#
   // #@#@#@#@#@ FUNCTIONS @#@#@#@#@#

@@ -1,11 +1,16 @@
+* {
+  font: bold 13px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 body {
-  background-image: url("../Images/MainsiteWallpaper.jpg");
+  /*background-image: url("../Images/MainsiteWallpaper.jpg");
   background-size: cover;
-  background-color: grey;
+  background-color: grey;*/
+  background: #353742;
 }
 .header h1 {
   margin: 0 auto;
   text-align: center;
+  color: white;
 }
 .body {
   display: grid;
@@ -25,4 +30,12 @@ body {
 }
 .card-block {
   background: brown;
+}
+
+.footer {
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  bottom: 0;
+  background: #1c2128;
 }

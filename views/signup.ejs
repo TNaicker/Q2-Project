@@ -3,17 +3,60 @@
   <head>
     <meta charset="utf-8">
     <title>Signup</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Lato:100,300,400">
+    <link rel="stylesheet" href="./Stylesheets/login.css">
+    <script src="https://use.fontawesome.com/1137c72f9a.js"></script>
   </head>
   <body>
+
+    <nav class="navbar navbar-inverse">
+      <p class="navbar-text navbar-right">Made by Tegan Naicker ||||</p>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="https://github.com/TNaicker/Q2-Project">
+            <i class="fa fa-github-square"></i>
+          </a>
+        </div>
+      </div>
+    </nav>
+
     <h1>SIGN UP!!!</h1>
 
-    <form action="/signup" method="post">
+    <!-- <form action="/signup" method="post">
       <p>Email</p><input type="email" name="email"><br>
       <p>Password</p><input type="password" name="password"></br>
 
       <button>Signup</button>
 
+    </form> -->
+
+    <form class="form-horizontal" action="/signup" method="post">
+      <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+          <input id="pleasebootstrap" type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-10">
+          <input id="pleasebootstrap" type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </div>
     </form>
+
+    <section class="footer">
+      <div class="bottom">
+
+      </div>
+    </section>
 
   </body>
 </html>
