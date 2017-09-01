@@ -154,8 +154,6 @@ $(function() {
 
   socket.on('userChat', (name, msg) => {
     guesses = msg;
-    console.log("GUESSES: " + guesses);
-    console.log("objectToDraw: " + objectToDraw);
     if(guesses === objectToDraw) {
       console.log("GUESSED!!");
       $('#messages').append($('<li style="background:green">').text(name + ' GUESSED THE WORD'));
