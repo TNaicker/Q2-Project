@@ -1,0 +1,28 @@
+* {
+  font: bold 13px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+body {
+  background: #353742;
+}
+h1 {
+  text-align: center;
+  color: white;
+}
+#logging {
+  margin: 0 auto;
+  margin-left: 150px;
+}
+#pleasebootstrap {
+  width: 400px;
+}
+.form-horizontal {
+  margin-left: 37vh;
+}
+
+.footer {
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  bottom: 0;
+  background: #1c2128;
+}

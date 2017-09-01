@@ -1,0 +1,41 @@
+* {
+  font: bold 13px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+body {
+  /*background-image: url("../Images/MainsiteWallpaper.jpg");
+  background-size: cover;
+  background-color: grey;*/
+  background: #353742;
+}
+.header h1 {
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+}
+.body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  color: white;
+}
+.body div {
+  margin: 0 auto;
+}
+.body img {
+  width: 100%;
+}
+.card {
+  width: 90%;
+  height: 500px;
+}
+.card-block {
+  background: brown;
+}
+
+.footer {
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  bottom: 0;
+  background: #1c2128;
+}

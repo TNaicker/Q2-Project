@@ -4,26 +4,46 @@
     <meta charset="utf-8">
     <title>testing</title>
     <link rel='stylesheet' href='./Stylesheets/style.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://use.fontawesome.com/1137c72f9a.js"></script>
   </head>
   <body>
 
-    <header id="header">
+    <header id="header" class="page-header">
+      <nav class="navbar navbar-inverse">
+        <p class="navbar-text navbar-right">Made by Tegan Naicker ||||</p>
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="https://github.com/TNaicker/Q2-Project">
+              <i class="fa fa-github-square"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
       <h1>PICTIONARY</h1>
     </header>
 
+    <div id="username">
+      <h2 id="enterName">Enter a username!</h2>
+      <form id="usernameForm" action="">
+        <input id="usernameInput" type="text" maxlength="15" />
+      </form>
+    </div>
+
     <section id="game">
       <div id="userList">
-        <ul id="users">
-          <li></li>
+        <ul id="users" class="list-group">
+          <li id="CurConnected" class="list-group-item"></li>
         </ul>
       </div>
       <div id="canvas">
+        <div id="overlay">Game starting...</div>
         <canvas id="myCanv" width="700" height="500"></canvas>
       </div>
       <div id="chat">
-        <ul id="messages"><li style='color:red'>CHAT...</li></ul>
-        <form action="">
+        <ul id="messages"></ul>
+        <form id="chatForm" action="">
           <input id="m" autocomplete="off" /><button>Send</button>
         </form>
       </div>

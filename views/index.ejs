@@ -3,17 +3,65 @@
   <head>
     <meta charset="utf-8">
     <title>Hello</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./Stylesheets/mainpage.css">
+    <link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Lato:100,300,400">
+    <script src="https://use.fontawesome.com/1137c72f9a.js"></script>
   </head>
   <body>
-    <h1>THIS IS TEMPORARY HOME PAGE</h1>
-    <% if(!loggedIn) { %>
-      <a href="/signup">Sign Up</a><br>
-      <a href="/login">Log in</a></br>
-      <a href="/game">PLAY</a>
-    <% } else { %>
-      <a href="/profile">Profile</a><br>
-      <a href="/logout">Logout</a></br>
-      <a href="/game">PLAY</a>
-    <% } %>
+
+    <section class="header">
+      <nav class="navbar navbar-inverse">
+        <p class="navbar-text navbar-right">Made by Tegan Naicker ||||</p>
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="https://github.com/TNaicker/Q2-Project">
+              <i class="fa fa-github-square"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+      <h1>Main Page</h1>
+    </section>
+    <section class="body">
+      <% if(!loggedIn) { %>
+        <div class="card">
+          <img class="card-img-top" src="./Images/Signup.jpg" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title">Don't have an account?</h4>
+            <p class="card-text">Sign up below!</p>
+            <a href="/signup" class="btn btn-primary btn-block">sign-up</a>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="./Images/play.jpg" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title">Play game!</h4>
+            <p class="card-text">Click below to jump right into a game!</p>
+            <a href="/game" class="btn btn-primary btn-block">PLAY</a>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="./Images/login.jpg" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title">Already have an account?</h4>
+            <p class="card-text">Log in below!</p>
+            <a href="/login" class="btn btn-primary btn-block">log-in</a>
+          </div>
+        </div>
+      <% } else { %>
+        <a href="/profile">Profile</a><br>
+        <a href="/logout">Logout</a></br>
+        <a href="/game">PLAY</a>
+      <% } %>
+    </section>
+
+    <section class="footer">
+      <div class="bottom">
+
+      </div>
+    </section>
+
   </body>
 </html>

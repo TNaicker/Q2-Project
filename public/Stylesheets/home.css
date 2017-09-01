@@ -1,0 +1,66 @@
+* {
+  font: bold 13px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.header {
+  margin: 0 auto;
+  color: white;
+  /*background: linear-gradient(to right, #2E3D9B, #3C177B);*/
+  background-color: black;
+  border: 1em groove #1c2128;
+  border-radius: 1px;
+  height: 80px;
+}
+.body {
+  /*background: linear-gradient(to right, #2E3D9B, #3C177B);*/
+  /*background: linear-gradient(to right, #a0d6b4, gray, #a0d6b4);*/
+  background: #353742;
+  height: 80vh;
+}
+.navbar-text {
+  padding-right: 19px;
+}
+
+
+.footer {
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  background: #1c2128;
+}
+
+#links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 5vh;
+  text-align: center;
+}
+.card-block {
+  height: 10vh;
+}
+.card-img-top {
+  width: 100%;
+  height: 180px;
+}
+.card a {
+  margin-top: 4vh;
+}
+
+.linkHolder {
+  border: 3px;
+  border-radius: 10px;
+  background: white;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 10vh;
+}
+.jumbotron {
+  text-align: center;
+  height: 150px;
+  border: 2px;
+  border-radius: 10px;
+}

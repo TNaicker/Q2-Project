@@ -27,6 +27,7 @@ router.post('/signup', (req, res) => {
           const user = insertedRow[0];
           console.log(user);
           req.session.user_id = user.id;
+          req.session.guest_id = null;
           res.redirect('/main');
         })
         .catch((err) => {
@@ -56,6 +57,7 @@ router.post('/login', (req, res) => {
         console.log('Welcome: ' + req.body.email);
         console.log('session b4: ' + req.session);
         req.session.user_id = query.id;
+        req.session.guest_id = null;
         console.log('session after: ' + req.session);
 
         res.redirect('/main');
