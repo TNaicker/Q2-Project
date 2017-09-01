@@ -114,7 +114,7 @@ $(function() {
     if(counter >= wordArr.length-1) {
       counter = 0;
     }
-  }, 29800)
+  }, 31000)
 
   $('#startbutt').click(function(){
     startgame = true;
