@@ -1,5 +1,5 @@
 # Pictionary
-Website for playing pictionary
+[Website for playing pictionary](https://cryptic-dawn-70536.herokuapp.com/game)
 
 ## Purpose
 Lets people play pictionary by registering or playing as guests in rooms created by users.
